@@ -10,15 +10,20 @@
     display: grid;
     background-color: #d3d3d3;
 }
+.main {
+    display: flex;
+}
 .selectvalue {
-    width: 48px;
-    height: 40px;
+    margin: 2px;
+    width: 30px;
+    height: 25px;
+    bottom: 0;
     top: 0;
     background: aqua;
     border-radius: 4px;
     text-align: center;
-    line-height: 45px;
-    font-size: 20px;
+    line-height: 25px;
+    font-size: 16px;
 }
 .selectValue::after {
     content: '';

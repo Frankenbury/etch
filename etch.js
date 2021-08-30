@@ -1,30 +1,45 @@
 //Global variables
 const container = document.querySelector('#container');
 const play = document.querySelector('#play');
-let size, boxes;
+let size;
 
 //variables for the language to add grid style.
 
 
 //Set the class and grid for #container
 container.classList.add('holder');
-//Create 16 divs that will go into #container with a loop
+//Start the fun when you click play
 play.addEventListener('click', makeDivs);
 function makeDivs() {
+    //Reset everything
+    let deletes = document.querySelectorAll('#hoverMe');
+    console.log(deletes);
+    for(let i = 0; i < deletes.length; i++) {
+        let removes = deletes[i];
+        container.removeChild(removes);
+    }
+    //Create and insert the boxes
     size = slider.value;
-    //Create the grid based on the slider location
+    //Create the grid based on the slider value
     const rows = "grid-template-rows: repeat(" + size + ", 1fr)";
     const columns = "grid-template-columns: repeat(" + size + ", 1fr)";
     const grid = rows + "; " + columns;
     container.setAttribute("style", grid);
     //Create the divs to fill the grid
+    //Give them a common ID to select all
+    //Give them a class to select the individual box
     for(let i = 0; i < (size * size); i++) {
-        boxes = document.createElement('div');
+        let boxes = document.createElement('div');
         boxes.id = "hoverMe";
+        boxes.classList.add("box" + i);
         container.appendChild(boxes);
     }
     for (let i = 0; i < document.querySelectorAll('#hoverMe').length; i++) {
-        document.querySelectorAll('#hoverMe')[i].addEventListener('click', colorChange);
+        document.querySelectorAll('#hoverMe')[i].addEventListener('mouseenter', function(event) {
+            //Target the div that is triggered
+            let smallBox = event.target;
+            smallBox.setAttribute("style", "background-color: black;");
+        });
     }
 }
 
@@ -37,10 +52,5 @@ const selectValue = document.querySelector('#selectValue');
 slider.oninput = function(){
     selector.style.left = this.value + "%";
     selectValue.innerHTML = slider.value;
-}
-
-function colorChange() {
-        boxes.setAttribute('style', 'background: black;');
-        console.log('fuck yeah');
 }
 
