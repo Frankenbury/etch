@@ -13,7 +13,6 @@ play.addEventListener('click', makeDivs);
 function makeDivs() {
     //Reset everything
     let deletes = document.querySelectorAll('#hoverMe');
-    console.log(deletes);
     for(let i = 0; i < deletes.length; i++) {
         let removes = deletes[i];
         container.removeChild(removes);
@@ -31,7 +30,7 @@ function makeDivs() {
     for(let i = 0; i < (size * size); i++) {
         let boxes = document.createElement('div');
         boxes.id = "hoverMe";
-        boxes.classList.add("box" + i);
+        //boxes.classList.add("box" + i);
         container.appendChild(boxes);
     }
     for (let i = 0; i < document.querySelectorAll('#hoverMe').length; i++) {
